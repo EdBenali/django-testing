@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Blog · Django Learning{% endblock %}
+
+{% block content %}
+  <h1>Blog</h1>
+
+  {% for post in posts %}
+    <article>
+      <h2><a href="{% url 'blog:post_detail' post.pk %}">{{ post.title }}</a></h2>
+      <time datetime="{{ post.published_at|date:'c' }}">
+        {{ post.published_at|date:"F j, Y, g:i a" }}
+      </time>
+    </article>
+  {% empty %}
+    <p>No posts yet.</p>
+  {% endfor %}
+{% endblock %}

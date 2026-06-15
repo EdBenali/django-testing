@@ -1,0 +1,45 @@
+---
+description: Require tests in plans for each relevant feature section
+alwaysApply: true
+---
+
+# Include Tests in Plans
+
+When creating or updating implementation plans, include tests wherever they add meaningful coverage. Do not defer testing to a vague follow-up or omit it unless the user explicitly says not to test.
+
+## Per-section coverage
+
+For each plan section that introduces behavior, add a matching test subsection:
+
+| Section | Include tests for |
+| --- | --- |
+| Models | field persistence, `__str__`, ordering, defaults, custom methods |
+| Admin | registration, changelist/add pages load, create/edit via admin when relevant |
+| Views / URLs | status codes, context/rendered content, auth/permissions, 404/edge cases |
+| Forms / API | valid/invalid input, validation errors, successful submission |
+| Templates | cover via view/integration tests using `assertContains` unless template logic is complex |
+| Management commands | command output, side effects, idempotency |
+| Signals / tasks | triggered behavior and side effects |
+
+Skip tests only when a section has no testable behavior (e.g. pure config scaffolding with no logic).
+
+## Plan structure
+
+- Add a dedicated **Tests** section (or test subsections under each feature section).
+- Name test classes/files and list concrete test methods (e.g. `test_detail_view_returns_404_for_missing_post`).
+- Add a plan todo for tests when the plan uses todos.
+- Include `poetry run python manage.py test <app>` (or the project’s test command) in verification steps.
+
+## Example (Django)
+
+```markdown
+## 4. Views — blog/views.py
+...
+
+### Tests — BlogPostListViewTests
+- test_list_view_returns_200
+- test_list_view_shows_post_titles
+- test_list_view_returns_404 is N/A here; cover in detail tests
+```
+
+Keep tests proportional: cover real behavior, not trivial getters or framework defaults.
