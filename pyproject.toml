@@ -1,0 +1,24 @@
+[project]
+name = "django-learning"
+version = "0.1.0"
+description = "Hands-on Django learning project"
+authors = [
+    {name = "Your Name",email = "you@example.com"}
+]
+requires-python = "^3.12"
+dependencies = [
+    "django (>=6.0.6,<7.0.0)",
+    "python-dotenv (>=1.2.2,<2.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "django-debug-toolbar (>=6.3.0,<7.0.0)",
+    "ipython (>=9.14.1,<10.0.0)",
+    "ruff (>=0.15.17,<0.16.0)"
+]

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Home · Django Learning{% endblock %}
+
+{% block content %}
+  <h1>Welcome to your Django sandbox</h1>
+  <p>
+    This project is set up for hands-on practice. Start with the
+    <code>pages</code> app, then add models, forms, and auth as you work
+    through the topics below.
+  </p>
+
+  <h2>Suggested learning path</h2>
+  <ol>
+    <li>URL routing and views — edit <code>pages/views.py</code> and <code>pages/urls.py</code></li>
+    <li>Templates and context — extend <code>templates/base.html</code></li>
+    <li>Models and migrations — add fields in <code>pages/models.py</code>, run <code>migrate</code></li>
+    <li>Django admin — register models in <code>pages/admin.py</code></li>
+    <li>Forms and validation — create a simple contact or note form</li>
+    <li>Authentication — use built-in <code>User</code> model and login views</li>
+    <li>Class-based views — refactor function views to CBVs</li>
+    <li>Testing — write tests in <code>pages/tests.py</code></li>
+  </ol>
+
+  <h2>Quick commands</h2>
+  <pre><code>poetry run python manage.py runserver
+poetry run python manage.py migrate
+poetry run python manage.py createsuperuser
+poetry run python manage.py shell</code></pre>
+{% endblock %}
